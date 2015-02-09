@@ -62,5 +62,6 @@ func (this *UserController) Get() {
 	this.Data["LogStr"], this.Data["LogURL"] = features.Strings(sess_username, sess_userlang)
 	this.Data["Main"] = features.Translate("Главная", sess_userlang)
 	this.Data["Lang"] = features.Translate("Язык", sess_userlang)
+	this.Data["UFiles"] = features.Translate("Файлы", sess_userlang)
 	this.TplNames = "user.tpl"
 }

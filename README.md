@@ -13,8 +13,6 @@
 
 Используемая СУБД: mysql.
 
-Требуется создать папку "Download" рядом с корневым каталогом приложения перед его запуском на сервере.
-
 Имеющийся функционал:
 <ul>
 <li>Система регистрации и аутентификации;</li>
@@ -36,8 +34,6 @@ Used tools:
 </ul>
 
 DBMS: mysql.
-
-You need create a folder "Download" in the same catalog where folder "Kate" situated.
 
 Functional:
 <ul>

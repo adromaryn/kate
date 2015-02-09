@@ -28,6 +28,7 @@ func (this *DownloadController) Get() {
 		this.Data["Enter"] = features.Translate("Войти", sess_userlang)
 		this.Data["Filename"] = features.Translate("Файл", sess_userlang)
 		this.Data["Save"] = features.Translate("Сохранить как", sess_userlang)
+		this.Data["UFiles"] = features.Translate("Файлы", sess_userlang)
 		this.TplNames = "download.tpl"
 
 	} else {
@@ -39,7 +40,7 @@ func (this *DownloadController) Download() {
 	file, _, _ := this.GetFile("file")
 	name := this.GetString("name")
 	sess_id, _ := this.GetSession("userid").(int64)
-	out, err := os.Create(fmt.Sprintf("../Downloads/%d/%s", sess_id, name))
+	out, err := os.Create(fmt.Sprintf("static/img/Downloads/%d/%s", sess_id, name))
 	beego.Info(err)
 	_, err = io.Copy(out, file)
 	if err != nil {

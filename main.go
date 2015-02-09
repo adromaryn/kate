@@ -7,6 +7,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
+	"path"
 )
 
 func init() {
@@ -30,10 +31,15 @@ func main() {
 	beego.SessionOn = true
 	beego.SessionName = "kate"
 	beego.AddFuncMap("pos", positive)
+	beego.AddFuncMap("base", base)
 	beego.Run()
 }
 
 func positive(i int64) (o int64) {
 	o = -i
 	return
+}
+
+func base(file string) string {
+	return path.Base(file)
 }

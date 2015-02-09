@@ -29,6 +29,7 @@ func (this *RegController) Get() {
 		this.Data["Login"] = features.Translate("Логин", sess_userlang)
 		this.Data["Password"] = features.Translate("Пароль", sess_userlang)
 		this.Data["Reg"] = features.Translate("Регистрация", sess_userlang)
+		this.Data["UFiles"] = features.Translate("Файлы", sess_userlang)
 		this.TplNames = "index.tpl"
 	} else {
 		this.Redirect("/", 302)
@@ -50,7 +51,7 @@ func (this *RegController) Post() {
 		if len(users) == 0 {
 			user.Password = features.Encrypt_hash(user.Password, nil)
 			id, _ := o.Insert(&user)
-			os.Mkdir(fmt.Sprintf("../Downloads/%d", user.Id), 466)
+			os.Mkdir(fmt.Sprintf("static/img/Downloads/%d", user.Id), 466)
 			this.SetSession("userid", user.Id)
 			this.SetSession("username", user.Name)
 			beego.Info(user.Id, user.Name)

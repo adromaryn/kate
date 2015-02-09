@@ -57,6 +57,7 @@ func (this *FollowController) Get() {
 		this.Data["Main"] = features.Translate("Главная", sess_userlang)
 		this.Data["Lang"] = features.Translate("Язык", sess_userlang)
 		this.Data["Followers"] = features.Translate("Подписчики", sess_userlang)
+		this.Data["UFiles"] = features.Translate("Файлы", sess_userlang)
 	} else {
 		this.Redirect("/", 302)
 	}
@@ -77,6 +78,7 @@ func (this *FollowController) Following() {
 		this.Data["Main"] = features.Translate("Главная", sess_userlang)
 		this.Data["Lang"] = features.Translate("Язык", sess_userlang)
 		this.Data["Followers"] = features.Translate("Подписки", sess_userlang)
+		this.Data["UFiles"] = features.Translate("Файлы", sess_userlang)
 	} else {
 		this.Redirect("/", 302)
 	}

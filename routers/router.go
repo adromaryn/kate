@@ -32,4 +32,5 @@ func init() {
 	beego.Router("/delete/comment/:id([0-9]+)", &controllers.CommentController{}, "*:Delete")
 	beego.Router("/download", &controllers.DownloadController{}, "get:Get")
 	beego.Router("/download", &controllers.DownloadController{}, "post:Download")
+	beego.Router("/files", &controllers.FileController{}, "get:Get")
 }

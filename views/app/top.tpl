@@ -12,6 +12,7 @@
     <li><p>{{.Menu}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
       <ul>
         <li><a href="/download">{{.Download}}</a></li>
+        <li><a href="/files">{{.UFiles}}</a></li>
       </ul>
     </li>     
   </ul>

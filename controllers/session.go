@@ -31,6 +31,9 @@ func (this *SessionController) Get() {
 		this.Data["Login"] = features.Translate("Логин", sess_userlang)
 		this.Data["Password"] = features.Translate("Пароль", sess_userlang)
 		this.Data["Enter"] = features.Translate("Войти", sess_userlang)
+		this.Data["Menu"] = features.Translate("Меню", sess_userlang)
+		this.Data["Download"] = features.Translate("Загрузить", sess_userlang)
+		this.Data["UFiles"] = features.Translate("Файлы", sess_userlang)
 		this.TplNames = "login.tpl"
 
 	} else {
@@ -47,6 +50,7 @@ func (this *SessionController) Post() {
 	this.Data["Download"] = features.Translate("Загрузить", sess_userlang)
 	this.Data["LogStr"], this.Data["LogURL"] = features.Strings("", sess_userlang)
 	this.Data["Main"] = features.Translate("Главная", sess_userlang)
+	this.Data["UFiles"] = features.Translate("Файлы", sess_userlang)
 	o := orm.NewOrm()
 	o.Using("default")
 	var users []*models.User
