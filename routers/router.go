@@ -33,4 +33,6 @@ func init() {
 	beego.Router("/download", &controllers.DownloadController{}, "get:Get")
 	beego.Router("/download", &controllers.DownloadController{}, "post:Download")
 	beego.Router("/files", &controllers.FileController{}, "get:Get")
+	beego.Router("/gallery/:id([0-9]+)", &controllers.FileController{}, "get:Gallery")
+	beego.Router(`/picture/:postid([0-9]+)/:id(.*)`, &controllers.FileController{}, "*:PicAttach")
 }

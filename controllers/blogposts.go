@@ -73,7 +73,8 @@ func (this *BlogPostController) Get() {
 		this.Data["Send"] = features.Translate("Отправить", sess_userlang)
 		this.Data["Delete"] = features.Translate("Удалить", sess_userlang)
 		this.Data["Edit"] = features.Translate("Редактировать", sess_userlang)
-		this.Data["UFiles"] = features.Translate("Ваши файлы", sess_userlang)
+		this.Data["Menu"] = features.Translate("Меню", sess_userlang)
+		this.Data["Download"] = features.Translate("Загрузить", sess_userlang)
 		this.Data["PostComments"] = features.PostComments(int64(postId))
 		this.Data["Sess"] = sess_uid
 		beego.Info(this.Data["PostComments"])
@@ -132,7 +133,8 @@ func (this *BlogPostController) Edit() {
 	this.Data["LogStr"], this.Data["LogURL"] = features.Strings(sess_username, sess_userlang)
 	this.Data["Main"] = features.Translate("Главная", sess_userlang)
 	this.Data["Lang"] = features.Translate("Язык", sess_userlang)
-	this.Data["UFiles"] = features.Translate("Файлы", sess_userlang)
+	this.Data["Menu"] = features.Translate("Меню", sess_userlang)
+	this.Data["Download"] = features.Translate("Загрузить", sess_userlang)
 	this.Data["Topic"] = posts[0].Name
 	this.Data["BlogPost"] = features.Translate("Пост", sess_userlang)
 	this.Data["Content"] = posts[0].Content

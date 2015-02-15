@@ -8,6 +8,7 @@ import (
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
 	"path"
+	"strconv"
 )
 
 func init() {
@@ -20,6 +21,7 @@ func init() {
 	orm.RegisterModel(new(models.Blogpost))
 	orm.RegisterModel(new(models.Follower))
 	orm.RegisterModel(new(models.Comment))
+	orm.RegisterModel(new(models.Postpic))
 	/*err := orm.RunSyncdb("default", true, true)
 	if err != nil {
 
@@ -32,6 +34,9 @@ func main() {
 	beego.SessionName = "kate"
 	beego.AddFuncMap("pos", positive)
 	beego.AddFuncMap("base", base)
+	beego.AddFuncMap("pics", pictures)
+	beego.AddFuncMap("lnk", link)
+	beego.AddFuncMap("picpath", picpath)
 	beego.Run()
 }
 
@@ -42,4 +47,21 @@ func positive(i int64) (o int64) {
 
 func base(file string) string {
 	return path.Base(file)
+}
+
+func pictures(i string) []*models.Postpic {
+	id, _ := strconv.Atoi(i)
+	o := orm.NewOrm()
+	o.Using("default")
+	var pics []*models.Postpic
+	o.QueryTable("postpics").Filter("post", id).All(&pics)
+	return pics
+}
+
+func link(picture *models.Postpic) string {
+	return picture.Link
+}
+
+func picpath(i int64, name string) string {
+	return fmt.Sprintf(`/static/img/Downloads/` + strconv.FormatInt(i, 10) + `/` + name)
 }

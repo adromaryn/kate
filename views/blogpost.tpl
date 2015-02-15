@@ -18,7 +18,17 @@
       <p>{{.Content}}</p>
       <br>
       <br>
+      {{$pics:= .Id | pics}}
+      {{$sess:= .Sess}}
+      {{range $i, $pic := $pics}}
+        <br><br>
+        {{$picname := $pic|lnk}}
+        {{$file:= picpath $sess $picname}}
+        <img src={{$file}} width=100% height=auto />
+      {{end}}
       {{if .Owner}}
+        <a href="/gallery/{{.Id}}">attach</a>
+        <br>
         <a class="post-button" href="../delete/post/{{.Id}} ">{{.DeletePost}}</a>
         <a class="post-button" href="../edit/post/{{.Id}} ">{{.Edit}}</a>
       {{end}}
