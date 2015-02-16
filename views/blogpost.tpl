@@ -20,14 +20,24 @@
       <br>
       {{$pics:= .Id | pics}}
       {{$sess:= .Sess}}
+      {{$owner:= .Owner}}
+      {{$unfix:= .Unfix}}	
       {{range $i, $pic := $pics}}
         <br><br>
         {{$picname := $pic|lnk}}
-        {{$file:= picpath $sess $picname}}
+        {{$picid := $pic|picnum}}
+        {{$id := .Id}}
+        {{$user := owner $id}}
+        {{$file:= picpath $user $picname}}
         <img src={{$file}} width=100% height=auto />
+        {{if $owner}}
+          <a href="/picture/unfix/{{$picid}}" class="content-link">{{$unfix}}</a>
+        {{end}}
       {{end}}
       {{if .Owner}}
-        <a href="/gallery/{{.Id}}">attach</a>
+        <br>
+        <br>
+        <a href="/gallery/{{.Id}}" class="content-link">{{.Attach}}</a>
         <br>
         <a class="post-button" href="../delete/post/{{.Id}} ">{{.DeletePost}}</a>
         <a class="post-button" href="../edit/post/{{.Id}} ">{{.Edit}}</a>

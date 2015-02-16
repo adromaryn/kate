@@ -32,6 +32,9 @@ func Translate(source string, lang string) string {
 		"Загрузить":     {"eng": "Download", "ru": "Загрузить", "chn": "下载"},
 		"Файл":          {"eng": "Filename", "ru": "Файл", "chn": "文件"},
 		"Сохранить как": {"eng": "Save as", "ru": "Сохранить как", "chn": "另存为"},
-		"Файлы":         {"eng": "Files", "ru": "Файлы", "chn": "文件"}}
+		"Файлы":         {"eng": "Files", "ru": "Файлы", "chn": "文件"},
+		"Галлерея":      {"eng": "Gallery", "ru": "Галлерея", "chn": "画廊"},
+		"Прикрепить":    {"eng": "Attach", "ru": "Прикрепить", "chn": "附"},
+		"Открепить":     {"eng": "Unfix", "ru": "Открепить", "chn": ""}}
 	return v[source][lang]
 }

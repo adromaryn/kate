@@ -16,9 +16,12 @@
     <div class="user-area" id="link">
       <h1>{{.UFiles}}</h1>
       <br>
+      {{$delete:=.Delete}}
       {{range $id, $file := .Files}}
         {{$name := $file|base}}
-        <a href={{$file}}>{{$name}}</a><br><br>
+        <a href={{$file}} class="content-link">{{$name}}</a><br>
+        <a href="/files/delete/{{$name}}" class="content-link" id="delete">{{$delete}}</a>
+        <br><br>
       {{end}}
   </div>
 </body>

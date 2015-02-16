@@ -49,3 +49,16 @@ func (this *DownloadController) Download() {
 		this.Redirect(`/`, 302)
 	}
 }
+
+func (this *DownloadController) Delete() {
+	name := this.GetString(":name")
+	beego.Info("Nme:", name)
+	sess_id, _ := this.GetSession("userid").(int64)
+	err := os.Remove(fmt.Sprintf("static/img/Downloads/%d/%s", sess_id, name))
+	if err != nil {
+		beego.Info(err)
+		this.Redirect(`/files`, 302)
+	} else {
+		this.Redirect(`/`, 302)
+	}
+}

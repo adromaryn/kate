@@ -75,12 +75,14 @@ func (this *BlogPostController) Get() {
 		this.Data["Edit"] = features.Translate("Редактировать", sess_userlang)
 		this.Data["Menu"] = features.Translate("Меню", sess_userlang)
 		this.Data["Download"] = features.Translate("Загрузить", sess_userlang)
+		this.Data["UFiles"] = features.Translate("Файлы", sess_userlang)
 		this.Data["PostComments"] = features.PostComments(int64(postId))
+		this.Data["Id"] = strconv.Itoa(postId)
 		this.Data["Sess"] = sess_uid
-		beego.Info(this.Data["PostComments"])
 		if sess_uid == post.Owner {
 			this.Data["Owner"] = true
-			this.Data["Id"] = strconv.Itoa(postId)
+			this.Data["Attach"] = features.Translate("Прикрепить", sess_userlang)
+			this.Data["Unfix"] = features.Translate("Открепить", sess_userlang)
 			this.Data["DeletePost"] = features.Translate("Удалить пост", sess_userlang)
 		} else {
 			this.Data["Owner"] = false
@@ -100,17 +102,20 @@ func (this *BlogPostController) Delete() {
 	o.QueryTable("blogposts").Filter("id", postId).All(&posts)
 	if len(posts) == 0 {
 		this.Redirect("/", 302)
-	}
-	post = *posts[0]
-	if sess_id := this.GetSession("userid"); post.Owner == sess_id {
-		o.Delete(&post)
-		var comments []*models.Comment
-		o.QueryTable("comments").Filter("post", postId).All(&comments)
-		for _, comment := range comments {
-			o.Delete(&comment)
+	} else {
+		post = *posts[0]
+		if sess_id := this.GetSession("userid"); post.Owner == sess_id {
+			o.Delete(&post)
+			var comments []*models.Comment
+			o.QueryTable("comments").Filter("post", postId).All(&comments)
+			for _, comment := range comments {
+				o.Delete(&comment)
+			}
+			var postpics []*models.Postpic
+			o.QueryTable("postpics").Filter("post", postId).All(&postpics)
 		}
+		this.Redirect("/", 302)
 	}
-	this.Redirect("/", 302)
 }
 
 func (this *BlogPostController) Edit() {

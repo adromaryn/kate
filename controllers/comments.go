@@ -43,10 +43,11 @@ func (this *CommentController) Delete() {
 	o.QueryTable("comments").Filter("id", commentId).All(&comments)
 	if len(comments) == 0 {
 		this.Redirect("/", 302)
+	} else {
+		comment = *comments[0]
+		if sess_id := this.GetSession("userid"); comment.Owner == sess_id {
+			o.Delete(&comment)
+		}
+		this.Redirect(fmt.Sprintf("/posts/%d", comment.Post), 302)
 	}
-	comment = *comments[0]
-	if sess_id := this.GetSession("userid"); comment.Owner == sess_id {
-		o.Delete(&comment)
-	}
-	this.Redirect(fmt.Sprintf("/posts/%d", comment.Post), 302)
 }

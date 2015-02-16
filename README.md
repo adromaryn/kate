@@ -19,7 +19,8 @@
 <li>Посты блога;</li>
 <li>Подписчики;</li>
 <li>Комментарии к постам;</li>
-<li>Мультиязычность.</li>
+<li>Мультиязычность;</li>
+<li>Загрузка файлов и прикрепление картинок(JPEG) к постам</li>
 </ul>
 
 <h3>English<h3>
@@ -41,7 +42,8 @@ Functional:
 <li>Blogposts;</li>
 <li>Followers;</li>
 <li>Comments;</li>
-<li>Multilanguage.</li>
+<li>Multilanguage;</li>
+<li>Files download and attachment pictures(JPEG)</li>
 </ul>
 
 adromaryn@gmail.com, 2014

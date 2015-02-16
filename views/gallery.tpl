@@ -14,7 +14,7 @@
     {{template "app/sides.tpl" .}}
   
     <div class="user-area" id="link">
-      <h1>{{.UFiles}}</h1>
+      <h1>{{.Gallery}}</h1>
       <br>
       {{$j := .Id}}
       {{range $id, $file := .Files}}

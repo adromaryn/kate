@@ -30,6 +30,7 @@ func (this *FileController) Get() {
 		this.Data["Password"] = features.Translate("Пароль", sess_userlang)
 		this.Data["Enter"] = features.Translate("Войти", sess_userlang)
 		this.Data["UFiles"] = features.Translate("Файлы", sess_userlang)
+		this.Data["Delete"] = features.Translate("Удалить", sess_userlang)
 		userpath := fmt.Sprint("static/img/Downloads/", sess_userid, "/*")
 		beego.Info(userpath)
 		files, _ := filepath.Glob(userpath)
@@ -68,6 +69,7 @@ func (this *FileController) Gallery() {
 			this.Data["Password"] = features.Translate("Пароль", sess_userlang)
 			this.Data["Enter"] = features.Translate("Войти", sess_userlang)
 			this.Data["UFiles"] = features.Translate("Файлы", sess_userlang)
+			this.Data["Gallery"] = features.Translate("Галлерея", sess_userlang)
 			userpath := fmt.Sprint("static/img/Downloads/", sess_userid, "/*.jp*g")
 			beego.Info(userpath)
 			files, _ := filepath.Glob(userpath)
@@ -109,5 +111,29 @@ func (this *FileController) PicAttach() {
 		this.Redirect(path, 302)
 	} else {
 		this.Redirect("/", 302)
+	}
+}
+
+func (this *FileController) Unfix() {
+	o := orm.NewOrm()
+	o.Using("default")
+	postpic := models.Postpic{}
+	postpicId, _ := this.GetInt64(":id")
+	var postpics []*models.Postpic
+	o.QueryTable("postpics").Filter("id", postpicId).All(&postpics)
+	if len(postpics) == 0 {
+		this.Redirect("/", 302)
+	} else {
+		postpic = *postpics[0]
+		var blogposts []*models.Blogpost
+		o.QueryTable("blogposts").Filter("id", postpic.Post).All(&blogposts)
+		if len(blogposts) == 0 {
+			this.Redirect("/", 302)
+		} else {
+			if sess_id := this.GetSession("userid"); blogposts[0].Owner == sess_id {
+				o.Delete(&postpic)
+			}
+			this.Redirect(fmt.Sprintf("/posts/%d", postpic.Post), 302)
+		}
 	}
 }

@@ -37,6 +37,8 @@ func main() {
 	beego.AddFuncMap("pics", pictures)
 	beego.AddFuncMap("lnk", link)
 	beego.AddFuncMap("picpath", picpath)
+	beego.AddFuncMap("picnum", picnumber)
+	beego.AddFuncMap("owner", owner)
 	beego.Run()
 }
 
@@ -62,6 +64,18 @@ func link(picture *models.Postpic) string {
 	return picture.Link
 }
 
+func picnumber(picture *models.Postpic) int64 {
+	return picture.Id
+}
+
 func picpath(i int64, name string) string {
 	return fmt.Sprintf(`/static/img/Downloads/` + strconv.FormatInt(i, 10) + `/` + name)
+}
+
+func owner(id int64) int64 {
+	o := orm.NewOrm()
+	o.Using("default")
+	var posts []*models.Blogpost
+	o.QueryTable("blogposts").Filter("id", id).All(&posts)
+	return posts[0].Owner
 }
