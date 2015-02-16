@@ -72,10 +72,12 @@ func picpath(i int64, name string) string {
 	return fmt.Sprintf(`/static/img/Downloads/` + strconv.FormatInt(i, 10) + `/` + name)
 }
 
-func owner(id int64) int64 {
+func owner(id string) int64 {
 	o := orm.NewOrm()
 	o.Using("default")
+	i, _ := strconv.Atoi(id)
 	var posts []*models.Blogpost
-	o.QueryTable("blogposts").Filter("id", id).All(&posts)
+	o.QueryTable("blogposts").Filter("id", i).All(&posts)
+	beego.Info(posts)
 	return posts[0].Owner
 }

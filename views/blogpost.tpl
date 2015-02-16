@@ -21,12 +21,12 @@
       {{$pics:= .Id | pics}}
       {{$sess:= .Sess}}
       {{$owner:= .Owner}}
-      {{$unfix:= .Unfix}}	
+      {{$unfix:= .Unfix}}
+      {{$id := .Id}}	
       {{range $i, $pic := $pics}}
         <br><br>
         {{$picname := $pic|lnk}}
         {{$picid := $pic|picnum}}
-        {{$id := .Id}}
         {{$user := owner $id}}
         {{$file:= picpath $user $picname}}
         <img src={{$file}} width=100% height=auto />
