@@ -8,10 +8,10 @@
   <link rel="shortcut icon" href="/static/img/fox.icon.png">
 </head>
 <body>
-  {{template "app/top.tpl ."}}
+  {{template "app/top.tpl"}}
   <div>
 
-    {{template "app/sides.tpl" .}}
+    {{template "app/sides.tpl"}}
    
     <div class="user-area"><h2>{{.Edit}}</h2></div>
       <form id="posting" method="post">
