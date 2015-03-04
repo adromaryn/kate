@@ -72,6 +72,8 @@ func (this *FollowController) Following() {
 	sess_username, _ := this.GetSession("username").(string)
 	sess_userlang, _ := this.GetSession("userlang").(string)
 	if sess_username != "" {
+		this.Data["Menu"] = features.Translate("Меню", sess_userlang)
+		this.Data["Download"] = features.Translate("Загрузить", sess_userlang)
 		this.Data["LogStr"], this.Data["LogURL"] = features.Strings(sess_username, sess_userlang)
 		this.Data["FolEx"], this.Data["AllFollowers"] = features.UserFollowing(followId, sess_userlang)
 		beego.Info(this.Data["FolEx"], this.Data["AllFollowers"])
