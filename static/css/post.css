@@ -9,18 +9,25 @@ a.post-button {
   padding: .5em 2em;
   outline: none;
   transition: 0.2s;
-  width: 14.5em;
+  width: 43%;
   margin-top: 1em;
 } 
 
 a.post-button:hover { background: #bbbbff; }
 
 #posting {
-	width: 400px;
 	height: 155px;
 	margin-top: 5em;
-        margin-left: auto;
-        margin-right: auto;
+   margin-left: 30%;
+   margin-right: auto;
+}
+
+#posting input[type="text"] {
+	width: 50%;
+}
+
+#posting textarea {
+   width: 80%;
 }
 
 #posting input[type="submit"] {

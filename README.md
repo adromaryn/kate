@@ -23,6 +23,8 @@
 <li>Загрузка файлов и прикрепление картинок(JPEG) к постам</li>
 </ul>
 
+Перед запуском создать папку static/Download
+
 <h3>English<h3>
 
 Blog engine on go/beego.
@@ -45,5 +47,7 @@ Functional:
 <li>Multilanguage;</li>
 <li>Files download and attachment pictures(JPEG)</li>
 </ul>
+
+Create `static/Download` folder.
 
 adromaryn@gmail.com, 2014

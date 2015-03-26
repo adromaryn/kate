@@ -61,12 +61,13 @@ table {
 	text-shadow: 0px 1px 1px #fff;
 	display: block;
 	float: left;
-        text-decoration: none;
+   text-decoration: none;
 }
 
 .topbar a:hover{
 	background: #fff;
 }
+
 .topbar span.right{
 	float: right;
 }
@@ -75,38 +76,9 @@ table {
 	display: block;
 }
 
-/*Обнуляем отступы*/
-ul, li {
-    margin:0;
-    padding:0;
-    list-style-type:none;   
+.topbar img{
+	display: block;
+   width: 24px;
+   height: auto;
 }
- 
-/*Задаём параметры блока, содержащего основное меню*/
-#menu {
-    display:block;
-    position:absolute;
-    top:auto;
-    left:50px;
-         
-}
- 
-/*Задаём стили для разделов нашего меню*/
-#menu > li {
-    display:inline-block;
-    height:20px;
-    position:relative;
-}
- 
-/*Стили для скрытого выпадающего меню*/
-#menu > li > ul {
-    position:absolute;
-    top:20px;
-    display:none; 
-    background: #eee;  
-}
- 
-/*Делаем скрытую часть видимой*/
-#menu > li:hover > ul {
-    display:block;  
-}
+

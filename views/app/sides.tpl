@@ -1,6 +1,7 @@
 <div id="left">
-    <img src="/static/img/fox.png" alt="fox" class="fox" />
-</div>
-<div id="right">
-    <img src="/static/img/fox.png" alt="fox" class="fox" />
+    <p>{{.Menu}}</p>
+    <br>
+    <a href="/download">{{.Download}}</a>
+    <br><br>
+    <a href="/files">{{.UFiles}}</a>
 </div>
