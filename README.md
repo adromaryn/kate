@@ -25,7 +25,7 @@
 
 Перед запуском создать папку static/Download
 
-<h3>English<h3>
+<h3>English</h3>
 
 Blog engine on go/beego.
 
